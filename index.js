@@ -20,11 +20,13 @@ const args = arg(
     '-n': Number,
     '--until-passes': Boolean,
     '--rerun-failed-only': Boolean,
+    '--run-all': Boolean,
   },
   { permissive: true },
 )
 const name = 'cypress-repeat:'
 const repeatNtimes = '-n' in args ? args['-n'] : 1
+const runAll = '--run-all' in args ? args['--run-all'] : false
 const untilPasses = '--until-passes' in args ? args['--until-passes'] : false
 const rerunFailedOnly =
   '--rerun-failed-only' in args ? args['--rerun-failed-only'] : false
@@ -149,7 +151,7 @@ parseArguments()
           } else {
             if (testResults.totalFailed) {
               console.error('%s run %d of %d failed', name, k + 1, n)
-              if (!rerunFailedOnly || isLastRun) {
+              if (!runAll && (!rerunFailedOnly || isLastRun)) {
                 process.exit(testResults.totalFailed)
               }
             }
