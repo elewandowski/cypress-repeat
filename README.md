@@ -1,3 +1,7 @@
+This is forked from https://github.com/bahmutov/cypress-repeat
+
+and adds a `run-all` flag to the cli, to force cypress to not stop execution, if a test run fails.
+
 # cypress-repeat [![ci status][ci image]][ci url] [![renovate-app badge][renovate-badge]][renovate-app] ![cypress version](https://img.shields.io/badge/cypress-8.7.0-brightgreen)
 
 > Run Cypress multiple times in a row, great at finding test flake
@@ -29,6 +33,7 @@ You can flip the logic and run Cypress up to N times until the first successful 
 ```shell
 npx cypress-repeat run -n <N> --until-passes ... rest of "cypress run" arguments
 ```
+
 ### Rerun only failed Specs
 
 You can rerun only the specs that failed
@@ -44,7 +49,7 @@ Every run has two utility variables injected
 ```js
 const n = Cypress.env('cypress_repeat_n') // total repeat attempts
 const k = Cypress.env('cypress_repeat_k') // current attempt, starts with 1
-                                          // and is <= n
+// and is <= n
 ```
 
 ## Debugging
