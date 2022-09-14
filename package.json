@@ -1,6 +1,6 @@
 {
   "name": "@elewandowski/cypress-repeat",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Run Cypress multiple times in a row. Forked from @bahmutov/cypress-repeat",
   "bin": {
     "cypress-repeat": "index.js"
